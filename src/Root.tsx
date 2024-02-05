@@ -1,11 +1,12 @@
 import App from "./App.tsx";
 import schemaContent from "./schemas/main2.sql?raw";
 import { DBProvider } from "@vlcn.io/react";
-import { useEffect, useState } from "react";
+//import { useEffect, useState } from "react";
 
 /**
  * Generates a random room name to sync with or pulls one from local storage.
  */
+/*
 function getRoom(hash: HashBag): string {
   return hash.room || localStorage.getItem("room") || newRoom();
 }
@@ -21,8 +22,13 @@ function hashChanged() {
   return room;
 }
 const room = hashChanged();
+*/
+
+// For this test we stick to a single, static room
+const room = "win-test";
 
 export default function Root() {
+  /*
   const [theRoom, setTheRoom] = useState(room);
   useEffect(() => {
     const cb = () => {
@@ -36,6 +42,9 @@ export default function Root() {
       removeEventListener("hashchange", cb);
     };
   }, []); // ignore -- theRoom is managed by the effect
+  */
+  // Again: single, static room
+  const theRoom = room;
 
   return (
     <DBProvider
@@ -49,6 +58,7 @@ export default function Root() {
   );
 }
 
+/*
 type HashBag = { [key: string]: string };
 function parseHash(): HashBag {
   const hash = window.location.hash;
@@ -76,3 +86,4 @@ function writeHash(hash: HashBag) {
 function newRoom() {
   return crypto.randomUUID().replaceAll("-", "");
 }
+*/
